@@ -1,0 +1,364 @@
+label {
+    font-weight: bolder;
+}
+::placeholder {
+    color: lightskyblue !important;
+    opacity: 3;
+}
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:  lightskyblue !important;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+    color:  lightskyblue !important;
+    opacity:  3;
+ }
+ #msg {
+     height: 60px;
+ }
+ #grid-contatos tbody {
+     cursor: pointer;
+ }
+
+.titulo_comentario
+{
+  padding-top: 50px;
+  text-align: center;
+
+}
+
+
+.SEGUIR_FOOTER
+{
+    text-align: center;
+    justify-content: center;
+    padding-left: 70px;
+    padding-top: 10px;
+    font-size: 20px;
+    padding-bottom: 10px;
+}
+.btnfooter
+{
+    margin-right: 18px;
+    border-width: 10px;
+}
+
+.jogosIMG
+{
+  width: 400px;
+  height: 280px;
+}
+.project-tab {
+  padding: 10%;
+  margin-top: -8%;
+}
+.project-tab #tabs{
+  background: #007b5e;
+  color: #eee;
+  
+}
+.project-tab #tabs h6.section-title{
+  color: #eee;
+}
+.project-tab #tabs .nav-tabs .nav-item.show .nav-link, .nav-tabs .nav-link.active {
+  color: #0062cc;
+  background-color: transparent;
+  border-color: transparent transparent #f3f3f3;
+  border-bottom: 3px solid !important;
+  font-size: 16px;
+  font-weight: bold;
+}
+.project-tab .nav-link {
+  border: 1px solid transparent;
+  border-top-left-radius: .25rem;
+  border-top-right-radius: .25rem;
+  color: #0062cc;
+  font-size: 16px;
+  font-weight: 600;
+}
+.project-tab .nav-link:hover {
+  border: none;
+}
+.project-tab thead{
+  background: #f3f3f3;
+  color: #333;
+}
+.project-tab a{
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
+}
+.header{
+    padding-top: 20px;  
+}
+.btn {
+    border: none; /* Remove borders */
+    color: white; /* Add a text color */
+    padding: 14px 28px;  /*Add some padding */ 
+    cursor: pointer; /* Add a pointer cursor on mouse-over */
+    background-color: #2196F3;
+    background: #0b7dda;
+    margin-left: 2px;
+    margin-right: 2px; 
+    margin-top: 50px;
+
+  }
+  .btn2 {
+
+    background-color: #2196F3;
+    border: none;
+    color: black;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+    margin-right: 20px;
+    float: right;
+    font-size: 15px;
+  }
+  
+  .logo
+  {
+      height: 200px;
+      width: 200px;
+      margin: 5px;
+  }
+ .cardPro
+ {
+   display: inline;
+ }
+.main{
+    background-color: #AB82FF;
+    width: 100%;
+}
+.rodape{
+    background-color: #AB82FF;
+    text-align: center;
+    color: black;
+    
+}
+#carouselExampleSlidesOnly img{
+    min-width: 100%;
+    max-width: 100%;
+    padding: 5%;
+    text-align: center;
+    
+}
+#carouselExampleControls{
+    padding: 7%;
+}
+#carouselExampleSlidesOnly{
+    text-align: center;
+    width: 100%;
+    
+}
+#carouselExampleIndicators{
+    padding: 7%;
+}
+
+@media only screen and (min-width:768px){
+.loguin{
+    font-size: xx-large;
+    display: block;
+    width: 100%;
+}
+.media{
+    width: 100%;
+}
+    .card1{
+    min-width: 40%;
+    height: 30%;
+}
+.card2{
+    min-width: 40%;
+    height: 30%;
+}
+.card3{
+    min-width: 40%;
+    height: 30%;
+      }
+.card-body1{
+    width: 300px;
+    height: 300px ;
+    
+    }
+    .card-text1{
+        padding-right: 70px; 
+    }
+}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:400,500,700);
+.snip1273 {
+    font-family: Arial, Helvetica, sans-serif;
+    position: relative;
+    margin: 10px;
+    width: 300px;
+    height: 200px;
+    color: black;
+    text-align: center;
+    background-color: white;
+    font-size: 20px;
+  }
+.snip1273 * {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+}
+.snip1273 img {
+  position: relative;
+  max-width: 100%;
+  vertical-align: top;
+}
+.snip1273 figcaption {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0;
+  padding: 20px 30px;
+}
+.snip1273 figcaption:before,
+.snip1273 figcaption:after {
+  width: 1px;
+  height: 0;
+}
+.snip1273 figcaption:before {
+  right: 0;
+  top: 0;
+}
+.snip1273 figcaption:after {
+  left: 0;
+  bottom: 0;
+}
+.snip1273 h3,
+.snip1273 p {
+  line-height: 1.5em;
+}
+.snip1273 h3 {
+  margin: 0 0 5px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.snip1273 p {
+  font-size: 0.8em;
+  font-weight: 500;
+  margin: 0 0 15px;
+}
+.snip1273 a {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+}
+.snip1273:before,
+.snip1273:after,
+.snip1273 figcaption:before,
+.snip1273 figcaption:after {
+  position: absolute;
+  content: '';
+  background-color: #ffffff;
+  z-index: 1;
+  -webkit-transition: all 0.4s ease-in;
+  transition: all 0.4s ease-in;
+  opacity: 0.8;
+}
+.snip1273:before,
+.snip1273:after {
+  height: 1px;
+  width: 0%;
+}
+.snip1273:before {
+  top: 0;
+  left: 0;
+}
+.snip1273:after {
+  bottom: 0;
+  right: 0;
+}
+.snip1273:hover img,
+.snip1273.hover img {
+  opacity: 0.4;
+}
+.snip1273:hover figcaption,
+.snip1273.hover figcaption {
+  opacity: 1;
+}
+.snip1273:hover figcaption:before,
+.snip1273.hover figcaption:before,
+.snip1273:hover figcaption:after,
+.snip1273.hover figcaption:after {
+  height: 100%;
+}
+.snip1273:hover:before,
+.snip1273.hover:before,
+.snip1273:hover:after,
+.snip1273.hover:after {
+  width: 100%;
+}
+.snip1273:hover:before,
+.snip1273.hover:before,
+.snip1273:hover:after,
+.snip1273.hover:after,
+.snip1273:hover figcaption:before,
+.snip1273.hover figcaption:before,
+.snip1273:hover figcaption:after,
+.snip1273.hover figcaption:after {
+  opacity: 0.1;
+}
+.fotosprofissionais
+{
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+@media only screen and (min-width:568px) and (max-width:823px)
+{
+    .header{
+        min-width: 100%;
+    }
+    .main{
+        min-width: 100%;
+    }
+    .rodape{
+        min-width: 100%;
+    }
+    .nav{
+        font-size: x-large;
+    }
+    #carouselExampleControls{
+        width: 100%;
+        text-align: center;
+    }
+    div.card-deck.my-2{
+        max-width: 100%;
+        padding: 3%;
+    }
+    button.btn.btn-primary
+    {
+        margin: 3%;
+        text-align: center;
+    }
+    h4
+    {
+        max-width: 95%;
+    }
+    div.col-md-12.bg-dark.space.p-3
+    {
+        max-width: 97%;
+    }
+
+    html
+    {
+        width: 100%;
+    }
+}
+
+
+

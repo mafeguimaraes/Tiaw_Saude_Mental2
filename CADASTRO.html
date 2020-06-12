@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="estilos.css" />
+        <link rel="stylesheet" href="estilo.css" />
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    
+        <title>CADASTRO</title>
+      </head>
+      <body style = "background-color: rgb(191, 206, 245);">
+    <div class="container">
+        <h4 class="escrita_cadastrar" style="text-align: center; margin-top: 20px; color: black">Faça seu cadastro para conversar com os profissionais</h4>
+
+        <center>
+            <form id="cadastro_form" action="login.html" class="form_cadastrar">
+            <div class="form-group col-md-6">
+                <h4><label for="user_name">Nome do usuário:</label></h4>
+                <input type="text" class="form-control" id="user_name" aria-describedby="user_name" name="user_name">
+            </div>
+            <div class="form-group col-md-6">
+                <h4><label for="user_password">Senha:</label></h4>
+                <input type="password" class="form-control" id="user_password" name="user_password">
+            </div>
+            <div class="form-group col-md-6">
+                <h4><label for="user_password">Confirmar senha:</label></h4>
+                <input type="password" class="form-control" id="confirmar_senha" name="confirmar_senha">
+            </div>
+            <p><button type="submit" class="btn btn-primary">Cadastrar</button></p>
+             </form>
+            </center>   
+    </div>
+    <script>
+        var req = new XMLHttpRequest();
+        var url = 'https://randomuser.me/api/?results=10';
+
+        function processaDados() {
+            var dados = JSON.parse (req.responseText);
+            var saida = '';
+            for (i = 0; i < dados.results.length; i++) {
+                saida += `<div class="box-cliente">
+                <img src="${dados.results[i].picture.medium}" alt="">
+                <p>${dados.results[i].name.first} ${dados.results[i].name.first} </p>
+                <p>Fone: ${dados.results[i].phone}</p>
+                <p>${dados.results[i].location.city} - ${dados.results[i].location.state}</p>
+                </div>`
+            }
+            document.getElementById('login').innerHTML = saida;
+        }
+
+        function getData() {
+            req.onload = processaDados;
+            req.open('GET', url, true);
+            req.send();
+        }
+    </script>
+</body>
+</html>

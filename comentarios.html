@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Comente algo do site</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="comentarios.css" />
+</head>
+
+<body onload="init()">
+    <header class="container header">
+        <img src="imagens/LOGO.png" class="logo" alt="...">
+        <a href="login.html"> <button class="btn2">LOGIN</button></a>
+        <a href="RELAX.html"> <button class="btn">HOME</button></a>
+        <a href="filmes.html"><button class="btn">FILMES/SÉRIES/LIVROS</button></a>
+        <a href="musicas.html"> <button class="btn">MÚSICAS</button></a>
+        <a href="jogos.html"> <button class="btn">JOGOS</button></a>
+        <a href="profissionais.html"> <button class="btn">PROFISSIONAIS</button></a>
+    </header>
+
+    <h3>
+        <p class="titulo_comentario">Comente algo que você goste ou que possa ajudar alguém. Just have fun.</p>
+    </h3>
+
+    <div class="container">
+        <div class="row">
+            <div id="msg" class="col-sm-10 offset-sm-1 ">
+                <!--<div class="alert alert-warning">Contato não encontrado.</div>-->
+            </div>
+        </div>
+
+        <form id="form-contato">
+            <div class="form-group row">
+                <div class="col-sm-1">
+                    <label for="inputCategoria">ID: (*)</label>
+                    <input type="text" class="form-control" id="inputId" placeholder="ID" disabled>
+                </div>
+                <div class="col-sm-7">
+                    <label for="inputNome">Nome: (*)</label>
+                    <input type="text" class="form-control" id="inputNome" required
+                        placeholder="Seu nome...">
+                </div>
+                <div class="col-sm-4">
+                    <label for="inputCategoria">Categoria: (*)</label>
+                    <input type="text" class="form-control" id="inputCategoria" required
+                        placeholder="Categoria">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">
+                    <label for="inputSite">Seu comentário: (*)</label>
+                    <input type="text" class="form-control" id="inputSite" required placeholder="Comente aqui...">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-4">
+                    <small>(*) Campos obrigatórios</small>
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12">                    
+                    
+                    <input type="button" class="btn2 btn-danger" id="btnDelete" value="EXCLUIR">
+                    <input type="button" class="btn2 btn-warning" id="btnUpdate" value="ALTERAR">
+                    <input type="button" class="btn2 btn-success" id="btnInsert" value="ENVIAR">
+                </div>
+            </div>
+        </form>
+
+        <div class="row">
+            <div class="col-sm-12">
+                <table id="grid-contatos" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Categoria</th>
+                            <th scope="col">comentário</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-contatos">
+                        <tr>
+                            <td scope="row">1</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="comentarios.js"></script>
+    <script>
+        function exibeContatos() {
+            // Remove todas as linhas do corpo da tabela
+            $("#table-contatos").html("");
+
+            // Popula a tabela com os registros do banco de dados
+            for (i = 0; i < db.data.length; i++) {
+                let contato = db.data[i];    
+                $("#table-contatos").append(`<tr><td scope="row">${contato.id}</td>
+                                                <td>${contato.nome}</td>
+                                                <td>${contato.categoria}</td>
+                                                <td>${contato.website}</td>
+                                            </tr>`);
+            }
+        }
+
+        function init() {
+            // Adiciona funções para tratar os eventos 
+            $("#btnInsert").click(function () {
+                // Verfica se o formulário está preenchido corretamente
+                if (!$('#form-contato')[0].checkValidity()) {
+                    displayMessage("Preencha o formulário corretamente.");
+                    return;
+                }
+
+                // Obtem os valores dos campos do formulário
+                let campoNome = $("#inputNome").val();
+                let campoCategoria = $('#inputCategoria').val();
+                let campoSite = $('#inputSite').val();
+                let contato = { nome: campoNome, 
+                    categoria: campoCategoria,
+                    website: campoSite };
+
+                insertContato(contato);
+
+                // Reexibe os contatos
+                exibeContatos();
+
+                // Limpa o formulario
+                $("#form-contato")[0].reset();
+            });
+
+            // Intercepta o click do botão Alterar
+            $("#btnUpdate").click(function () {
+                // Obtem os valores dos campos do formulário
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um contato para ser alterado.");
+                    return;
+                }
+                let campoNome = $("#inputNome").val();
+                let campoCategoria = $("#inputCategoria").val();
+                let campoSite = $('#inputSite').val();
+                let contato = { nome: campoNome, 
+                    categoria: campoCategoria,
+                    website: campoSite };
+
+                updateContato(parseInt(campoId), contato);
+
+                // Reexibe os contatos
+                exibeContatos();
+
+                // Limpa o formulario
+                $("#form-contato")[0].reset();
+            });
+
+            // Intercepta o click do botão Excluir
+            $("#btnDelete").click(function () {
+                let campoId = $("#inputId").val();
+                if (campoId == "") {
+                    displayMessage("Selecione um contato a ser excluído.");
+                    return;
+                }
+                deleteContato(parseInt(campoId));
+
+                // Reexibe os contatos
+                exibeContatos();
+
+                // Limpa o formulario
+                $("#form-contato")[0].reset();
+            });
+
+            // Intercepta o click do botão Listar Contatos
+            $("#btnClear").click(function () {
+                $("#form-contato")[0].reset();
+            });
+
+            // Oculta a mensagem de aviso após alguns segundos
+            $('#msg').bind("DOMSubtreeModified", function () {
+                window.setTimeout(function () {
+                    $(".alert").fadeTo(500, 0).slideUp(500, function () {
+                        $(this).remove();
+                    });
+                }, 5000);
+            });
+
+            // Preenche o formulário quando o usuario clicar em uma linha da tabela 
+            $("#grid-contatos").on("click", "tr", function (e) {
+                let linhaContato = this;
+                colunas = linhaContato.querySelectorAll("td");
+
+                $("#inputId").val(colunas[0].innerText);
+                $("#inputNome").val(colunas[1].innerText);
+                $("#inputCategoria").val(colunas[5].innerText);
+                $("#inputSite").val(colunas[6].innerText);
+            });
+
+            exibeContatos();
+        }
+    </script>
+</body>
+
+</html>
